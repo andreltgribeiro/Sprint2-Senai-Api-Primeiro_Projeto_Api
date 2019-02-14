@@ -49,6 +49,12 @@ namespace Senai.SviGufo.WebApi.Controllers
             //retorna ok e o tipo de evento
             return Ok(tipoEvento);
         }
+
+        /// <summary>
+        /// Verbo para incluir um novo tipo de evento através do ID na url
+        /// </summary>
+        /// <param name="tipoEventoRecebido"></param>
+        /// <returns>Ok</returns>
         [HttpPost]
         public IActionResult Post(TipoEventoDomain tipoEventoRecebido)
         {
@@ -59,6 +65,30 @@ namespace Senai.SviGufo.WebApi.Controllers
                 Nome = tipoEventoRecebido.Nome
             });
             return Ok(tiposEventos);
+        }
+      
+        /// <summary>
+        /// Verbo para alterar um tipo de evento usando o id através da URL
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="tipoEventoRecebido"></param>
+        /// <returns>OK</returns>
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, TipoEventoDomain tipoEventoRecebido)
+        {
+            return Ok();
+        }
+
+        /// <summary>
+        /// Verbo para deletar um tipo de evento usando o id atrvés da URL
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            tiposEventos.Remove(tiposEventos.Find(x => x.Id == id));
+            return Ok();
         }
     }
 }

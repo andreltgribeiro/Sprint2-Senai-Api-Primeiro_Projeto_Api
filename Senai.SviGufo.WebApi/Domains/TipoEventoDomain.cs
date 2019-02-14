@@ -1,7 +1,7 @@
 ﻿namespace Senai.SviGufo.WebApi.Domains
 {
     /// <summary>
-    /// Classe que representa a entidade tipo Evento
+    /// Classe que representa a entidade Tipo Evento
     /// </summary>
     public class TipoEventoDomain
     {

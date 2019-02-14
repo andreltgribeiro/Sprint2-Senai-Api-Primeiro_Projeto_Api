@@ -71,11 +71,7 @@ namespace Senai.SviGufo.WebApi.Controllers
         public IActionResult Post(TipoEventoDomain tipoEventoRecebido)
         {
             //Adciona o tipo de evento recebido na Api
-            tiposEventos.Add(new TipoEventoDomain
-            {
-                Id = tiposEventos.Count + 1,
-                Nome = tipoEventoRecebido.Nome
-            });
+            TipoEventoRepository.Cadastrar(tipoEventoRecebido);
             return Ok(tiposEventos);
         }
       

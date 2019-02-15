@@ -1,0 +1,170 @@
+{
+	"variables": [],
+	"info": {
+		"name": "SviGufo.WebApi",
+		"_postman_id": "0e058cb0-7ae2-aa35-8e45-dc804dea78ab",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TiposEventos",
+			"description": "",
+			"item": [
+				{
+					"name": "TiposEventos.Listar",
+					"request": {
+						"url": "http://localhost:5000/api/tiposeventos",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "TiposEventos.Cadastrar",
+					"request": {
+						"url": "http://localhost:5000/api/tiposeventos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\t\n\t\"nome\": \"Ajax\"\t\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "TiposEventos.Alterar",
+					"request": {
+						"url": "http://localhost:5000/api/tiposeventos/4",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\" : \"Design\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "TiposEventos.Deletar",
+					"request": {
+						"url": "http://localhost:5000/api/tiposeventos/2",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Instituicao",
+			"description": "",
+			"item": [
+				{
+					"name": "InstituicaoListar",
+					"request": {
+						"url": "http://localhost:5000/api/instituicao",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "InstituicaoCadastrar",
+					"request": {
+						"url": "http://localhost:5000/api/instituicao",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"nomeFantasia\": \"Senai\",\n        \"razaoSocial\": \"Escola Técnica\",\n        \"cnpj\": \"03774819009290\",\n        \"logradouro\": \" Avenida Paulista, 1990\",\n        \"cep\": \"01202002\",\n        \"uf\": \"SP\",\n        \"cidade\": \"São Paulo\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "InstituicaoEditar",
+					"request": {
+						"url": "http://localhost:5000/api/instituicao/2",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n        \"nomeFantasia\": \"Senai Têxtil\",\n        \"razaoSocial\": \"Escola Têxtil\",\n        \"cnpj\": \"13974819009290\",\n        \"logradouro\": \" Rua do Bras, 132\",\n        \"cep\": \"01202001\",\n        \"uf\": \"SP\",\n        \"cidade\": \"São Paulo\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "InsituicaoDeletar",
+					"request": {
+						"url": "http://localhost:5000/api/instituicao/2",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "InstituicaoBuscarPorId",
+					"request": {
+						"url": "http://localhost:5000/api/instituicao/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

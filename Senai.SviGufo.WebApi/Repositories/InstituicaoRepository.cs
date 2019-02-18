@@ -71,7 +71,7 @@ namespace Senai.SviGufo.WebApi.Repositories
             }
         }
 
-        public void Editar (InstituicaoDomain instituicao)
+        public void Editar (InstituicaoDomain instituicao, int id)
         {
             using (SqlConnection con = new SqlConnection(StringConexaoBD))
             {
@@ -130,22 +130,27 @@ namespace Senai.SviGufo.WebApi.Repositories
                     comandos.Parameters.AddWithValue("@ID", id);
                     reader = comandos.ExecuteReader();
 
-                    while (reader.Read())
+                    if (reader.HasRows)
                     {
-                        InstituicaoDomain instituicao = new InstituicaoDomain
+                        while (reader.Read())
                         {
-                            ID = Convert.ToInt32(reader["ID"]),
-                            NomeFantasia = reader["NOME_FANTASIA"].ToString(),
-                            RazaoSocial = reader["RAZAO_SOCIAL"].ToString(),
-                            CNPJ = reader["CNPJ"].ToString(),
-                            Logradouro = reader["LOGRADOURO"].ToString(),
-                            CEP = reader["CEP"].ToString(),
-                            UF = reader["UF"].ToString(),
-                            Cidade = reader["CIDADE"].ToString()
-                        };
-                        return instituicao;
-                        
+                            InstituicaoDomain instituicao = new InstituicaoDomain
+                            {
+                                ID = Convert.ToInt32(reader["ID"]),
+                                NomeFantasia = reader["NOME_FANTASIA"].ToString(),
+                                RazaoSocial = reader["RAZAO_SOCIAL"].ToString(),
+                                CNPJ = reader["CNPJ"].ToString(),
+                                Logradouro = reader["LOGRADOURO"].ToString(),
+                                CEP = reader["CEP"].ToString(),
+                                UF = reader["UF"].ToString(),
+                                Cidade = reader["CIDADE"].ToString()
+                            };
+                            return instituicao;
+
+                        }
+                        return null;
                     }
+                    
                 }
             }
             return null;

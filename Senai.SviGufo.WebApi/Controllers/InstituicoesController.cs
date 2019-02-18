@@ -13,20 +13,20 @@ namespace Senai.SviGufo.WebApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class InstituicaoController : ControllerBase
+    public class InstituicoesController : ControllerBase
     {
 
         private IInstituicaoRepository InstituicaoRepository{ get; set;}
 
-        public InstituicaoController()
+        public InstituicoesController()
         {
             InstituicaoRepository = new InstituicaoRepository();
         }
 
         [HttpGet]
-        public IEnumerable<InstituicaoDomain> Listar()
+        public IActionResult Listar()
         {
-            return InstituicaoRepository.Listar();
+            return Ok(InstituicaoRepository.Listar());
         }
 
         //[HttpGet("{id}")]
@@ -48,32 +48,75 @@ namespace Senai.SviGufo.WebApi.Controllers
             InstituicaoDomain instituicao = new InstituicaoDomain();
             instituicao = InstituicaoRepository.Buscar(id);
 
+            if (instituicao == null)
+            {
+                return NotFound();
+            }
             return Ok(instituicao);
         }
 
         [HttpPost]
         public IActionResult Cadastrar(InstituicaoDomain instituicao)
         {
-            InstituicaoRepository.Cadastrar(instituicao);
+            try
+            {
+                InstituicaoRepository.Cadastrar(instituicao);
 
-            var Lista = InstituicaoRepository.Listar();
+                var Lista = InstituicaoRepository.Listar();
 
-            return Ok();
+                return Ok(Lista);
+            }
+            catch
+            {
+                return BadRequest();
+            }
+            
         }
 
         [HttpPut("{id}")]
         public IActionResult Alterar(int id, InstituicaoDomain instituicao)
         {
-            instituicao.ID = id;
-            InstituicaoRepository.Editar(instituicao);
-            return Ok(instituicao);
+            InstituicaoDomain instituicaoBuscada = InstituicaoRepository.Buscar(id);
+            if (instituicaoBuscada == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                InstituicaoRepository.Editar(instituicao, id);
+
+                return Ok(instituicao);
+            }
+            catch
+            {
+
+                return NotFound();
+            }
+            
+            
         }
 
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
-            InstituicaoRepository.Deletar(id);
-            return Ok();
+            InstituicaoDomain instituicaoBuscada = InstituicaoRepository.Buscar(id);
+            if (instituicaoBuscada == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                InstituicaoRepository.Deletar(id);
+
+                return Ok();
+            }
+            catch
+            {
+
+                return NotFound();
+            }
         }
     }
 }

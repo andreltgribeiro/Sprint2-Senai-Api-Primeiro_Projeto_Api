@@ -14,7 +14,7 @@ namespace Senai.SviGufo.WebApi.Intefaces
 
         void Cadastrar(InstituicaoDomain instituicao);
 
-        void Editar(InstituicaoDomain instituicao);
+        void Editar(InstituicaoDomain instituicao, int id);
 
         void Deletar(int id);
 
